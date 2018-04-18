@@ -9,8 +9,7 @@
 const db = require('./')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
-const utils = require('./utils')
-const handleFatalError = utils.handleFatalError
+const { handleFatalError } = require('metricfy-utils')
 const { dbConfig } = require('metricfy-config')
 
 const prompt = inquirer.createPromptModule()
@@ -31,10 +30,10 @@ async function setup () {
   }
 
   // traer la configuracion
-  const config = dbConfig({setup: true}) // hacer el setup y borrar la db
+  const configDatabase = dbConfig({setup: true}) // hacer el setup y borrar la db
 
   // realizar el setup
-  await db(config.db).catch(handleFatalError)
+  await db(configDatabase).catch(handleFatalError)
 
   console.log('success')
   process.exit(0)

@@ -1,15 +1,14 @@
 'use strict'
 
 const db = require('../')
-const utils = require('../utils')
-const handleFatalError = utils.handleFatalError
+const { handleFatalError } = require('metricfy-utils')
 const { dbConfig } = require('metricfy-config')
 
 async function run () {
   // traer la configuracion
-  const config = dbConfig({setup: true}) // hacer el setup y borrar la db
+  const configDatabase = dbConfig({setup: true}) // hacer el setup y borrar la db
 
-  const { Agent, Metric } = await db(config).catch(handleFatalError)
+  const { Agent, Metric } = await db(configDatabase).catch(handleFatalError)
 
   const agent = await Agent.createOrUpdate({
     uuid: 'yyy',

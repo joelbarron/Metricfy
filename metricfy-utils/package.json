@@ -1,7 +1,7 @@
 {
-  "name": "metricfy-config",
+  "name": "metricfy-utils",
   "version": "1.0.0",
-  "description": "A simple IOT platform - config",
+  "description": "A simple IOT platform - utils",
   "main": "index.js",
   "scripts": {
     "lint": "standard"
@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/joelbarron/metricfy#readme",
   "dependencies": {
-    "debug": "3.1.0"
+    "debug": "3.1.0",
+    "chalk": "2.1.0"
   },
   "devDependencies": {
-    "standard": "10.0.3",
-    "metricfy-utils": "file:../metricfy-utils"
+    "standard": "10.0.3"
   }
 }

@@ -8,19 +8,19 @@
     "lint": "standard",
     "setup": "DEBUG=metricfy:* node setup.js",
     "test": "DEBUG=metricfy:* nyc --reporter=lcov ava tests/ --verbose",
-    "postinstall": "npm run setup -- --yes",
+    "setup-prod": "npm run setup -- --yes",
     "examples": "node examples/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joelbarron/Metricfy.git"
+    "url": "git+https://github.com/joelbarron/metricfy.git"
   },
   "author": "Joel Barrón",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joelbarron/Metricfy/issues"
+    "url": "https://github.com/joelbarron/metricfy/issues"
   },
-  "homepage": "https://github.com/joelbarron/Metricfy#readme",
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
   "devDependencies": {
     "ava": "0.21.0",
     "nyc": "11.1.0",
@@ -37,6 +37,7 @@
     "pg": "7.1.0",
     "pg-hstore": "2.3.2",
     "sequelize": "4.4.2",
-    "metricfy-config": "file:../metricfy-config"
+    "metricfy-config": "file:../metricfy-config",
+    "metricfy-utils": "file:../metricfy-utils"
   }
 }

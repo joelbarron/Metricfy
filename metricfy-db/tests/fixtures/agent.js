@@ -1,7 +1,6 @@
 'use strict'
 
-const utils = require('../../utils')
-const extend = utils.extend
+const { extend } = require('metricfy-utils')
 
 const agent = {
   id: 1,

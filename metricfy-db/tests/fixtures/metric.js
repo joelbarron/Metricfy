@@ -1,8 +1,7 @@
 'use strict'
 
 const agentFixtures = require('./agent')
-const utils = require('../../utils')
-const extend = utils.extend
+const { extend, sortBy } = require('metricfy-utils')
 
 const metric = {
   id: 1,
@@ -38,7 +37,7 @@ function findByTypeAgentUuid (type, uuid) {
     delete clone.agent
 
     return clone
-  }).sort(utils.sortBy('createdAt')).reverse()
+  }).sort(sortBy('createdAt')).reverse()
 }
 
 module.exports = {

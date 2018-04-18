@@ -5,9 +5,9 @@
 */
 
 const debug = require('debug')('metricfy:db')
+const { extend } = require('metricfy-utils')
 
 function dbConfig (configExtra) {
-
   // objeto de configuracion
   const configDatabase = {
     database: process.env.DB_NAME || 'metricfydb',
@@ -26,10 +26,4 @@ function dbConfig (configExtra) {
 
 module.exports = {
   dbConfig
-}
-
-// funcion para extender un obeto
-function extend (obj, values) {
-  const clone = Object.assign({}, obj)
-  return Object.assign(clone, values)
 }
