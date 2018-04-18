@@ -114,16 +114,11 @@ server.on('published', async (packet, client) => {
           })
         }
 
-        // almacenar las metricas (el for of soporta async await es la unica diferencia con respecto al for each)
-        for (let metric of payload.metrics) {
-          let m
-          try {
-            m = await Metric.create(agent.uuid, metric)
-          } catch (e) {
-            return handleError(e)
-          }
-
-          debug(`Metric ${m.id} saved on agent ${agent.uuid}`)
+        // almacenar las metricas (se almacenan en paralelo, la version anterior era en serie)
+        try {
+          await Promise.all(payload.metrics.map(metric => Metric.create(agent.uuid, metric)))
+        } catch (err) {
+          return handleError(err)
         }
       }
       break
