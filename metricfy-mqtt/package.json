@@ -2,7 +2,7 @@
   "name": "metricfy-mqtt",
   "version": "1.0.0",
   "private": true,
-  "description": "A simple IOT Platform - mqtt",
+  "description": "A simple IOT Platform - server mqtt",
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV:production node server.js",
@@ -11,24 +11,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joelbarron/Metricfy.git"
+    "url": "git+https://github.com/joelbarron/metricfy.git"
   },
   "author": "Joel Barrón",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joelbarron/Metricfy/issues"
+    "url": "https://github.com/joelbarron/metricfy/issues"
   },
-  "homepage": "https://github.com/joelbarron/Metricfy#readme",
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
   "devDependencies": {
-    "nodemon": "^1.12.1",
-    "standard": "^10.0.3"
+    "nodemon": "1.12.1",
+    "standard": "10.0.3"
   },
   "dependencies": {
-    "platziverse-db": "file:../metricfy-db",
-    "platziverse-config": "file:../metricfy-config",
-    "chalk": "^2.3.0",
-    "debug": "^3.1.0",
-    "mosca": "^2.7.0",
-    "redis": "^2.8.0"
+    "metricfy-db": "file:../metricfy-db",
+    "metricfy-config": "file:../metricfy-config",
+    "metricfy-utils": "file:../metricfy-utils",
+    "chalk": "2.3.0",
+    "debug": "3.1.0",
+    "mosca": "2.7.0",
+    "redis": "2.8.0"
   }
 }

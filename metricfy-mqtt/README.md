@@ -47,22 +47,21 @@
 
 ```js
 {
-   "agent":{
-      "uuid":"xxx-xxx-xxx",
-      "name":"test",
-      "username":"test-user",
-      "hostname":"test-hostname",
-      "pid":10
-   },
-   "metrics":[
-      {
-         "type":"memory",
-         "value":"1001"
-      },
-      {
-         "type":"temp",
-         "value":"33"
-      }
-   ]
+	"agent": {
+		"uuid": "xxx",
+		"name": "test name",
+		"username": "testuser",
+		"pid": 123,
+		"hostname": "testhostname"
+	},
+	"metrics": [{
+		"type": "memory",
+		"value": "1024"
+	}, {
+		"type": "temp",
+		"value": "34"
+	}]
 }
 ```
+
+{"agent":{"uuid": "xxx-ede","name": "test name","username": "testuser","pid": 21233,"hostname": "testhostname"},"metrics": [{"type": "memory","value": "1024"}, {"type": "temp","value": "34"}]}
