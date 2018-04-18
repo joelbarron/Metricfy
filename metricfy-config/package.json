@@ -1,0 +1,20 @@
+{
+  "name": "metricfy-config",
+  "version": "1.0.0",
+  "description": "A simple IOT platform - config",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelbarron/Metricfy.git"
+  },
+  "author": "Joel Barrón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joelbarron/Metricfy/issues"
+  },
+  "homepage": "https://github.com/joelbarron/Metricfy#readme",
+  "dependencies": {
+    "debug": "^3.1.0"
+  }
+}
