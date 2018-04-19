@@ -1,0 +1,16 @@
+
+// peticion usuario admin sin permisos
+curl -v -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvZWxiYXJyb24iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE2MjM5MDIyfQ.ZZmTDFgE2eHffi55mggqd4E51nxssx79tsyqSU61YTNkCA8a7HMlcOPdYU_jEmJRsjiQAeiopug2vXkHuAwMNQ' http://localhost:3000/v1/agents |jq
+curl -v -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvZWxiYXJyb24iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE2MjM5MDIyfQ.ZZmTDFgE2eHffi55mggqd4E51nxssx79tsyqSU61YTNkCA8a7HMlcOPdYU_jEmJRsjiQAeiopug2vXkHuAwMNQ' http://localhost:3000/v1/metrics/42732ff1-8dbb-4ec0-9614-2e6815010da3 |jq
+
+
+// peticion usuariotest
+curl -v -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTUxNjIzOTAyMn0.bhPiitDYRpXwqecxc4O3IbbqsqGz4RFIXubhAT_q0duUr2dpwxE3kw6aqPVWdF7QaENManw6PiXOQu_JJCZvrQ' http://localhost:3000/v1/agents |jq
+
+// peticion usuario admin con mas data en el payload
+
+curl -v -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bGlhbiIsImRhdG8iOnsib3RybyI6MTB9LCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE2MjM5MDIyfQ.Z6BKeERSWt3WTtQr_hbUtUAfl7V0uxk3A6JQqzx3Ah8zu6MYmCkb3B-gelhHDm9Hpqe5yZ-LnaHbHft1fbkBog' http://localhost:3000/v1/agents |jq
+
+
+// peticion usuario admin con permisosread
+curl -v -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvZWxiYXJyb24iLCJhZG1pbiI6dHJ1ZSwicGVybWlzc2lvbnMiOlsibWV0cmljczpyZWFkIl0sImlhdCI6MTUxNjIzOTAyMn0.KRCrFXnOtfPtzLDWtfMsiBZ8Nksx1PBkA9LM0cAmMr8xeD59IiiyhV-vXReeBNDLUgT4M6gnPDronHgXWy6_KA' http://localhost:3000/v1/metrics/42732ff1-8dbb-4ec0-9614-2e6815010da3 |jq

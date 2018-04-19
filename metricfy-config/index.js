@@ -24,6 +24,11 @@ function dbConfig (configExtra) {
   return configDatabase
 }
 
+const authConfig = {
+  secret: process.env.SECRET || 'metricfy'
+}
+
 module.exports = {
-  dbConfig
+  dbConfig,
+  authConfig
 }

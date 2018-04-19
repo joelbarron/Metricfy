@@ -54,13 +54,16 @@
 		"pid": 123,
 		"hostname": "testhostname"
 	},
-	"metrics": [{
-		"type": "memory",
-		"value": "1024"
-	}, {
-		"type": "temp",
-		"value": "34"
-	}]
+	"metrics": [
+    {
+      "type": "memory",
+      "value": "1024"
+    },
+    {
+      "type": "temp",
+      "value": "34"
+    }
+  ]
 }
 ```
 

@@ -31,7 +31,7 @@ let connectedArgs = {
 }
 
 let usernameArgs = {
-  where: { username: 'platzi', connected: true }
+  where: { username: 'metricfy', connected: true }
 }
 
 let newAgent = {
@@ -73,7 +73,7 @@ test.beforeEach(async () => {
   AgentStub.findAll = sandbox.stub()
   AgentStub.findAll.withArgs().returns(Promise.resolve(agentFixtures.all))
   AgentStub.findAll.withArgs(connectedArgs).returns(Promise.resolve(agentFixtures.connected))
-  AgentStub.findAll.withArgs(usernameArgs).returns(Promise.resolve(agentFixtures.platzi))
+  AgentStub.findAll.withArgs(usernameArgs).returns(Promise.resolve(agentFixtures.metricfy))
 
   const setupDatabase = proxyquire('../', {
     './models/agent': () => AgentStub,
@@ -175,12 +175,12 @@ test.serial('Agent#findConnected', async t => {
 
 // FIND BY USERNAME
 test.serial('Agent#findByUsername', async t => {
-  let agents = await db.Agent.findByUsername('platzi')
+  let agents = await db.Agent.findByUsername('metricfy')
 
   t.true(AgentStub.findAll.called, 'findAll should be called on model')
   t.true(AgentStub.findAll.calledOnce, 'findAll should be called once')
   t.true(AgentStub.findAll.calledWith(usernameArgs), 'findAll should be called with username args')
 
-  t.is(agents.length, agentFixtures.platzi.length, 'agents should be the same amount')
-  t.deepEqual(agents, agentFixtures.platzi, 'agents should be the same')
+  t.is(agents.length, agentFixtures.metricfy.length, 'agents should be the same amount')
+  t.deepEqual(agents, agentFixtures.metricfy, 'agents should be the same')
 })

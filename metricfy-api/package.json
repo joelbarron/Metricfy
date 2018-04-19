@@ -1,0 +1,43 @@
+{
+  "name": "metricfy-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple IOT Platform - API",
+  "main": "server.js",
+  "scripts": {
+    "test": "DEBUG=metricfy:* ava tests/ --verbose",
+    "lint": "standard",
+    "start-dev": "DEBUG=metricfy:* nodemon server.js",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelbarron/metricfy.git"
+  },
+  "author": "Joel Barrón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joelbarron/metricfy/issues"
+  },
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
+  "devDependencies": {
+    "ava": "0.23.0",
+    "nodemon": "1.12.1",
+    "proxyquire": "1.8.0",
+    "sinon": "4.1.1",
+    "standard": "10.0.3",
+    "supertest": "3.0.0"
+  },
+  "dependencies": {
+    "chalk": "2.3.0",
+    "debug": "3.1.0",
+    "express": "4.16.2",
+    "express-asyncify": "1.0.0",
+    "express-jwt": "5.3.1",
+    "express-jwt-permissions": "^1.1.0",
+    "jsonwebtoken": "8.2.1",
+    "metricfy-config": "file:../metricfy-config",
+    "metricfy-db": "file:../metricfy-db",
+    "metricfy-utils": "file:../metricfy-utils"
+  }
+}

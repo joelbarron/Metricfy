@@ -1,0 +1,30 @@
+{
+  "name": "metricfy-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple IOT Platform - Agent",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelbarron/metricfy.git"
+  },
+  "author": "Joel Barrón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joelbarron/metricfy/issues"
+  },
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
+  "devDependencies": {
+    "standard": "10.0.3"
+  },
+  "dependencies": {
+    "debug": "3.1.0",
+    "defaults": "1.0.3",
+    "mqtt": "2.13.1",
+    "uuid": "3.1.0",
+    "metricfy-utils": "file:../metricfy-utils"
+  }
+}

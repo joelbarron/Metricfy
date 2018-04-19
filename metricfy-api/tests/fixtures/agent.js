@@ -16,9 +16,9 @@ const agent = {
 
 const agents = [
   agent,
-  extend(agent, { id: 2, uuid: 'yyy-xxx-www', connected: false, username: 'metricfy' }),
+  extend(agent, { id: 2, uuid: 'uuyyy-xxx-www', connected: false, username: 'metricfy' }),
   extend(agent, { id: 3, uuid: 'aaa-sxd-wdw' }),
-  extend(agent, { id: 4, username: 'test' })
+  extend(agent, { id: 4, uuid: 'yaasdedyy-xxx-www', username: 'test' })
 ]
 
 module.exports = {
