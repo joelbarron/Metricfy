@@ -23,37 +23,36 @@ class MetricfyAgent extends EvenEmitter {
     super()
 
     this._options = defaults(opts, defOptions)
-    this._timer = null // para el intervalo de envio de metricas
-    this._started = false // para verfificar el status
-    this._client = null // es el cliente mqtt
-    this._agentId = null // id de nuestro agente
-    this._metrics = new Map() // metricas que reportara
+    this._started = false
+    this._timer = null
+    this._client = null
+    this._agentId = null
+    this._metrics = new Map()
+  }
+
+  addMetric (type, fn) {
+    this._metrics.set(type, fn)
+  }
+
+  removeMetric (type) {
+    this._metrics.delete(type)
   }
 
   connect () {
     if (!this._started) {
-      // asignar las opciones
       const opts = this._options
-
-      // conectarnos al server
       this._client = mqtt.connect(opts.mqtt.host)
-
-      // marcar como inicializado
       this._started = true
 
-      // suscripciones
       this._client.subscribe('agent/message')
       this._client.subscribe('agent/connected')
       this._client.subscribe('agent/disconnected')
 
-      // si se conecta
       this._client.on('connect', () => {
-        // generar el uuid
         this._agentId = uuid.v4()
 
-        this.emit('connected', this._agentId) // emit
+        this.emit('connected', this._agentId)
 
-        // inicializar el timer
         this._timer = setInterval(async () => {
           if (this._metrics.size > 0) {
             let message = {
@@ -70,7 +69,7 @@ class MetricfyAgent extends EvenEmitter {
 
             for (let [ metric, fn ] of this._metrics) {
               if (fn.length === 1) {
-                fn = util.promisify(fn) // convertir el callback a la promesa
+                fn = util.promisify(fn)
               }
 
               message.metrics.push({
@@ -82,23 +81,18 @@ class MetricfyAgent extends EvenEmitter {
             debug('Sending', message)
 
             this._client.publish('agent/message', JSON.stringify(message))
-
             this.emit('message', message)
           }
         }, opts.interval)
       })
 
-      // si recibimos un mensaje
       this._client.on('message', (topic, payload) => {
         payload = parsePayload(payload)
 
         let broadcast = false
-
         switch (topic) {
           case 'agent/connected':
-            break
           case 'agent/disconnected':
-            break
           case 'agent/message':
             broadcast = payload && payload.agent && payload.agent.uuid !== this._agentId
             break
@@ -109,7 +103,6 @@ class MetricfyAgent extends EvenEmitter {
         }
       })
 
-      // si ocurre un error nos desconectamos
       this._client.on('error', () => this.disconnect())
     }
   }
@@ -121,14 +114,6 @@ class MetricfyAgent extends EvenEmitter {
       this.emit('disconnected', this._agentId)
       this._client.end()
     }
-  }
-
-  addMetric (type, fn) {
-    this._metrics.set(type, fn)
-  }
-
-  removeMetric (type, fn) {
-    this._metrics.delete(type)
   }
 }
 

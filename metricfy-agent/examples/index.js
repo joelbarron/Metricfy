@@ -1,10 +1,11 @@
 // const MetricfyAgent = require('metricfy-agent')
 const MetricfyAgent = require('../')
+const chalk = require('chalk')
 
 const agent = new MetricfyAgent({
-  name: 'myapp',
-  username: 'joelbarron',
-  interval: 2000
+  name: `myapp-${Math.random()}`,
+  username: `user-${Math.random()}`,
+  interval: 1400
 })
 
 agent.addMetric('rss', function getRss () {
@@ -29,12 +30,27 @@ agent.on('disconnected', handler)
 agent.on('message', handler)
 
 // Other Agents
-agent.on('agent/connected', handler)
-agent.on('agent/disconnected', handler)
-agent.on('agent/message', handler)
+agent.on('agent/connected', handlerCon)
+agent.on('agent/disconnected', handlerDis)
+agent.on('agent/message', handlerMsg)
 
 function handler (payload) {
   console.log(payload)
 }
 
-setTimeout(() => agent.disconnect(), 20000)
+function handlerCon (payload) {
+  console.log(`${chalk.green('AGENT/CONNECTED')}`)
+  console.log(payload)
+}
+
+function handlerDis (payload) {
+  console.log(`${chalk.red('AGENT/DISCONNECTED')}`)
+  console.log(payload)
+}
+
+function handlerMsg (payload) {
+  console.log(`${chalk.blue('AGENT/MESSAGE')}`)
+  console.log(payload)
+}
+
+// setTimeout(() => agent.disconnect(), 20000)
