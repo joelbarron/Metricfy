@@ -5,7 +5,10 @@ const chalk = require('chalk')
 const agent = new MetricfyAgent({
   name: `myapp-${Math.random()}`,
   username: `user-${Math.random()}`,
-  interval: 1400
+  interval: 1400,
+  mqtt: {
+    host: 'mqtt://localhost'
+  }
 })
 
 agent.addMetric('rss', function getRss () {

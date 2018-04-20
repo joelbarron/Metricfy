@@ -10,7 +10,7 @@ const api = asyncify(express.Router())
 api.get('/agents', async(req, res, next) => {
   const options = {
     method: 'GET',
-    url: `${configWeb.endpoint}/${configWeb.apiVersion}/agents`,
+    url: `${configWeb.apiEndpoint}/${configWeb.apiVersion}/agents`,
     headers: {
       'Authorization': `Bearer ${configWeb.apiToken}`
     },
@@ -30,7 +30,7 @@ api.get('/agents', async(req, res, next) => {
 api.get('/agents/:uuid', async(req, res) => {
   const options = {
     method: 'GET',
-    url: `${configWeb.endpoint}/${configWeb.apiVersion}/agents/${req.params.uuid}`,
+    url: `${configWeb.apiEndpoint}/${configWeb.apiVersion}/agents/${req.params.uuid}`,
     headers: {
       'Authorization': `Bearer ${configWeb.apiToken}`
     },
@@ -50,7 +50,7 @@ api.get('/agents/:uuid', async(req, res) => {
 api.get('/metrics/:uuid', async(req, res) => {
   const options = {
     method: 'GET',
-    url: `${configWeb.endpoint}/${configWeb.apiVersion}/metrics/${req.params.uuid}`,
+    url: `${configWeb.apiEndpoint}/${configWeb.apiVersion}/metrics/${req.params.uuid}`,
     headers: {
       'Authorization': `Bearer ${configWeb.apiToken}`
     },
@@ -70,7 +70,7 @@ api.get('/metrics/:uuid', async(req, res) => {
 api.get('/metrics/:uuid/:type', async(req, res) => {
   const options = {
     method: 'GET',
-    url: `${configWeb.endpoint}/${configWeb.apiVersion}/metrics/${req.params.uuid}/${req.params.type}`,
+    url: `${configWeb.apiEndpoint}/${configWeb.apiVersion}/metrics/${req.params.uuid}/${req.params.type}`,
     headers: {
       'Authorization': `Bearer ${configWeb.apiToken}`
     },

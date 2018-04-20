@@ -22,6 +22,7 @@
 const request = require('request-promise-native')
 const io = require('socket.io-client')
 const socket = io()
+const { configWeb } = require('metricfy-config')
 
 
 module.exports = {
@@ -42,7 +43,7 @@ module.exports = {
 
       const options = {
         method: 'GET',
-        url: `http://localhost:8080/agents`,
+        url: `${configWeb.proxyEndpoint}/agents`,
         json: true
       }
 

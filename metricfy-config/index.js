@@ -4,7 +4,7 @@
   SIRVE PARA RETORNAR LA CONFIGURACION
 */
 
-const debug = require('debug')('metricfy:db')
+const debug = require('debug')('metricfy:config')
 const { extend } = require('metricfy-utils')
 
 function dbConfig (configExtra) {
@@ -33,8 +33,10 @@ const configApi = {
 }
 
 const configWeb = {
+  mqttHost: process.env.MQTT_HOST || 'mqtt://localhost',
   port: process.env.PORT || 8080,
-  endpoint: process.env.API_ENDPOINT || 'http://localhost:3000',
+  apiEndpoint: process.env.API_ENDPOINT || 'http://localhost:3000',
+  proxyEndpoint: process.env.PROXY_ENDPOINT || 'http://localhost:8080',
   apiVersion: process.env.API_VERSIOIN || 'v1',
   apiToken: process.env.API_TOKEN || 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvZWxiYXJyb24iLCJhZG1pbiI6dHJ1ZSwicGVybWlzc2lvbnMiOlsibWV0cmljczpyZWFkIl0sImlhdCI6MTUxNjIzOTAyMn0.KRCrFXnOtfPtzLDWtfMsiBZ8Nksx1PBkA9LM0cAmMr8xeD59IiiyhV-vXReeBNDLUgT4M6gnPDronHgXWy6_KA'
 }

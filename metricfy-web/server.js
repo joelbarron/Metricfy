@@ -15,7 +15,11 @@ const { handleFatalError, errorHandlerExpress, pipe } = require('metricfy-utils'
 const app = asyncify(express())
 const server = http.createServer(app)
 const io = socketio(server)
-const agent = new MetricfyAgent()
+const agent = new MetricfyAgent({
+  mqtt: {
+    host: configWeb.mqttHost
+  }
+})
 
 // montar archivos estatico
 app.use(express.static(path.join(__dirname, 'public')))

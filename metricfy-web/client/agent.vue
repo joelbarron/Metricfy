@@ -75,6 +75,7 @@
 
 <script>
 const request = require('request-promise-native')
+const { configWeb } = require('metricfy-config')
 
 module.exports = {
   props: [ 'uuid', 'socket' ],
@@ -101,7 +102,7 @@ module.exports = {
 
       const options = {
         method: 'GET',
-        url: `http://localhost:8080/agents/${uuid}`,
+        url: `${configWeb.proxyEndpoint}/agents/${uuid}`,
         json: true
       }
 
@@ -127,7 +128,7 @@ module.exports = {
 
        const options = {
         method: 'GET',
-        url: `http://localhost:8080/metrics/${uuid}`,
+        url: `${configWeb.proxyEndpoint}/metrics/${uuid}`,
         json: true
       }
 
