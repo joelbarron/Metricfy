@@ -1,0 +1,26 @@
+{
+  "name": "metricfy-cli",
+  "version": "1.0.0",
+  "description": "A simple IOT platform - cli",
+  "bin": "metricfy.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelbarron/metricfy.git"
+  },
+  "author": "Joel Barrón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joelbarron/metricfy/issues"
+  },
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.5"
+  },
+  "devDependencies": {
+    "standard": "10.0.3"
+  }
+}

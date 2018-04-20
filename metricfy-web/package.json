@@ -1,0 +1,66 @@
+{
+  "name": "metricfy-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple IOT Platform - Web",
+  "main": "server.js",
+  "scripts": {
+    "lint": "standard",
+    "start-dev": "DEBUG=metricfy:* nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
+    "prestart": "npm run build",
+    "prestart-dev": "npm run build",
+    "build": "browserify -t babelify -t vueify client/app.js -o public/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelbarron/metricfy.git"
+  },
+  "author": "Joel Barrón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joelbarron/metricfy/issues"
+  },
+  "homepage": "https://github.com/joelbarron/metricfy#readme",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-es2015": "6.24.1",
+    "babelify": "7.3.0",
+    "browserify": "14.4.0",
+    "nodemon": "1.12.1",
+    "standard": "10.0.3",
+    "vueify": "9.4.1",
+    "vue-template-compiler": "2.5.16"
+  },
+  "dependencies": {
+    "chalk": "2.3.0",
+    "chart.js": "2.6.0",
+    "debug": "3.1.0",
+    "express": "4.16.2",
+    "express-asyncify": "1.0.0",
+    "metricfy-agent": "file:../metricfy-agent",
+    "metricfy-config": "file:../metricfy-config",
+    "metricfy-utils": "file:../metricfy-utils",
+    "moment": "^2.22.1",
+    "random-material-color": "^1.0.3",
+    "request": "2.85.0",
+    "request-promise-native": "1.0.5",
+    "socket.io": "2.1.0",
+    "socket.io-client": "^2.1.0",
+    "vue": "2.5.16",
+    "vue-chartjs": "2.8.1"
+  }
+}
