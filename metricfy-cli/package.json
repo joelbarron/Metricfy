@@ -18,7 +18,9 @@
   "homepage": "https://github.com/joelbarron/metricfy#readme",
   "dependencies": {
     "blessed": "^0.1.81",
-    "blessed-contrib": "^4.8.5"
+    "blessed-contrib": "^4.8.5",
+    "metricfy-agent": "file:../metricfy-agent",
+    "moment": "^2.22.1"
   },
   "devDependencies": {
     "standard": "10.0.3"
