@@ -21,7 +21,7 @@
 <script>
 const request = require('request-promise-native')
 const io = require('socket.io-client')
-const socket = io()
+const socket = io(configWeb.proxyEndpoint)
 const { configWeb } = require('metricfy-config')
 
 
