@@ -5,7 +5,7 @@ const mosca = require('mosca')
 const redis = require('redis')
 const chalk = require('chalk')
 const db = require('metricfy-db')
-const { dbConfig } = require('metricfy-config')
+const { dbConfig, mqttServerConfig } = require('metricfy-config')
 const { parsePayload, handleFatalError, handleError } = require('metricfy-utils')
 
 // traer la configuracion
@@ -14,11 +14,13 @@ const configDatabase = dbConfig({setup: false}) // no hacer el setup (ya que si 
 const backend = {
   type: 'redis',
   redis,
-  return_buffers: true
+  return_buffers: true,
+  port: mqttServerConfig.backendRedisPort,
+  host: mqttServerConfig.redisHost
 }
 
 const settings = {
-  port: 1883,
+  port: mqttServerConfig.serverPort,
   backend
 }
 

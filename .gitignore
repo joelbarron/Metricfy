@@ -18,3 +18,5 @@ metricfy-db/coverage
 metricfy-db/.nyc_output
 
 
+#env
+metricfy-deploy/env/production.env

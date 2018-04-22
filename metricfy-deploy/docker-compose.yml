@@ -1,0 +1,74 @@
+#Metricfy
+version: "2"
+services:
+  # METRICFY MQTT
+  metricfy-mqtt:
+    image: "node:8"
+    restart: always
+    container_name: "metricfy-mqtt-module"
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - /opt/metricfy/source-code:/home/node/app
+    ports:
+      - "7600:58"
+    env_file:
+      - ./env/production.env
+    links:
+      - metricfy-postgres
+      - metricfy-redis
+    depends_on:
+      - metricfy-postgres
+      - metricfy-redis
+    command: "cd metricfy-db && npm run setup-prod && cd ../metricfy-mqtt && npm start"
+  # METRICFY API
+  metricfy-api:
+    image: "node:8"
+    restart: always
+    container_name: "metricfy-api-module"
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - /opt/metricfy/source-code:/home/node/app
+    ports:
+      - "7600:3000"
+    env_file:
+      - ./env/production.env
+    links:
+      - metricfy-postgres
+    depends_on:
+      - metricfy-postgres
+    command: "cd metricfy-api && npm start"
+  # METRICFY WEB
+  metricfy-web:
+    image: "node:8"
+    restart: always
+    container_name: "metricfy-web-module"
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - /opt/metricfy/source-code:/home/node/app
+    ports:
+      - "7605:8080"
+    env_file:
+      - ./env/production.env
+    command: "cd metricfy-web && npm start"
+  # POSTGRES
+  metricfy-postgres:
+    image: postgres:9.6
+    restart: always
+    container_name: "metricfy-postgresql-db"
+    env_file:
+      - ./env/production.env
+    volumes:
+      - /opt/metricfy/data/postgres:/var/lib/postgresql/data/pgdata
+    ports:
+        - 5432:5432
+  # redis
+  metricfy-redis:
+    image: redis:4.0.5-alpine
+    restart: always
+    command: "redis-server --appendonly yes"
+    hostname: redis
+    volumes:
+      - /opt/metricfy/data/redis:/data
