@@ -15,12 +15,14 @@ const backend = {
   type: 'redis',
   redis,
   return_buffers: true,
-  port: mqttServerConfig.backendRedisPort,
+  // port: mqttServerConfig.backendRedisPort,
+  port: 6379,
   host: mqttServerConfig.redisHost
 }
 
 const settings = {
-  port: mqttServerConfig.serverPort,
+  port: 1883,
+  // port: mqttServerConfig.serverPort,
   backend
 }
 
