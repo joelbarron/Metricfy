@@ -1,13 +1,28 @@
 #Metricfy
 version: "2"
 services:
+  # METRICFY DATABASE SETUP
+  metricfy-db-setup:
+    image: "node:8"
+    container_name: "metricfy-db-setup"
+    user: "node"
+    working_dir: /home/node/app/metricfy-db
+    volumes:
+      - /opt/metricfy/source-code:/home/node/app
+    env_file:
+      - ./env/production.env
+    links:
+      - metricfy-postgres
+    depends_on:
+      - metricfy-postgres
+    command: "npm run setup-prod"
   # METRICFY MQTT
   metricfy-mqtt:
     image: "node:8"
     restart: always
     container_name: "metricfy-mqtt-module"
     user: "node"
-    working_dir: /home/node/app
+    working_dir: /home/node/app/metricfy-mqtt
     volumes:
       - /opt/metricfy/source-code:/home/node/app
     ports:
@@ -20,14 +35,14 @@ services:
     depends_on:
       - metricfy-postgres
       - metricfy-redis
-    command: "cd metricfy-db && npm run setup-prod && cd ../metricfy-mqtt && npm start"
+    command: "npm start"
   # METRICFY API
   metricfy-api:
     image: "node:8"
     restart: always
     container_name: "metricfy-api-module"
     user: "node"
-    working_dir: /home/node/app
+    working_dir: /home/node/app/metricfy-api
     volumes:
       - /opt/metricfy/source-code:/home/node/app
     ports:
@@ -38,21 +53,21 @@ services:
       - metricfy-postgres
     depends_on:
       - metricfy-postgres
-    command: "cd metricfy-api && npm start"
+    command: "npm start"
   # METRICFY WEB
   metricfy-web:
     image: "node:8"
     restart: always
     container_name: "metricfy-web-module"
     user: "node"
-    working_dir: /home/node/app
+    working_dir: /home/node/app/metricfy-web
     volumes:
       - /opt/metricfy/source-code:/home/node/app
     ports:
       - "7605:8080"
     env_file:
       - ./env/production.env
-    command: "cd metricfy-web && npm start"
+    command: "npm start"
   # POSTGRES
   metricfy-postgres:
     image: postgres:9.6
