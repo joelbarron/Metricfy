@@ -20,7 +20,7 @@ services:
   metricfy-mqtt:
     image: "node:8"
     restart: always
-    container_name: "metricfy-mqtt-module"
+    container_name: "metricfy-mqtt"
     user: "node"
     working_dir: /home/node/app/metricfy-mqtt
     volumes:
@@ -40,7 +40,7 @@ services:
   metricfy-api:
     image: "node:8"
     restart: always
-    container_name: "metricfy-api-module"
+    container_name: "metricfy-api"
     user: "node"
     working_dir: /home/node/app/metricfy-api
     volumes:
@@ -58,7 +58,7 @@ services:
   metricfy-web:
     image: "node:8"
     restart: always
-    container_name: "metricfy-web-module"
+    container_name: "metricfy-web"
     user: "node"
     working_dir: /home/node/app/metricfy-web
     volumes:
@@ -72,7 +72,7 @@ services:
   metricfy-postgres:
     image: postgres:9.6
     restart: always
-    container_name: "metricfy-postgresql-db"
+    container_name: "metricfy-postgres"
     env_file:
       - ./env/production.env
     volumes:
@@ -82,6 +82,7 @@ services:
   # redis
   metricfy-redis:
     image: redis:4.0.5-alpine
+    container_name: "metricfy-redis"
     restart: always
     command: "redis-server --appendonly yes"
     hostname: redis
