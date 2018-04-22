@@ -13,7 +13,7 @@ function dbConfig (configExtra) {
     database: process.env.DB_NAME || 'metricfydb',
     username: process.env.DB_USER || 'metricfy',
     password: process.env.DB_PASS || 'pass123',
-    hostname: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'localhost',
     dialect: 'postgres',
     loggin: s => debug(s),
     setup: false
