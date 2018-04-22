@@ -32,6 +32,8 @@ async function setup () {
   // traer la configuracion
   const configDatabase = dbConfig({setup: true}) // hacer el setup y borrar la db
 
+  console.log(configDatabase)
+
   // realizar el setup
   await db(configDatabase).catch(handleFatalError)
 
