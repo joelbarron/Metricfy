@@ -5,7 +5,7 @@ services:
   metricfy-db-setup:
     image: "node:8"
     container_name: "metricfy-db-setup"
-    user: "node"
+    user: "root"
     working_dir: /home/node/app/metricfy-db
     volumes:
       - /opt/metricfy/source-code:/home/node/app
@@ -21,7 +21,7 @@ services:
     image: "node:8"
     restart: always
     container_name: "metricfy-mqtt"
-    user: "node"
+    user: "root"
     working_dir: /home/node/app/metricfy-mqtt
     volumes:
       - /opt/metricfy/source-code:/home/node/app
@@ -41,7 +41,7 @@ services:
     image: "node:8"
     restart: always
     container_name: "metricfy-api"
-    user: "node"
+    user: "root"
     working_dir: /home/node/app/metricfy-api
     volumes:
       - /opt/metricfy/source-code:/home/node/app
@@ -59,7 +59,7 @@ services:
     image: "node:8"
     restart: always
     container_name: "metricfy-web"
-    user: "node"
+    user: "root"
     working_dir: /home/node/app/metricfy-web
     volumes:
       - /opt/metricfy/source-code:/home/node/app
