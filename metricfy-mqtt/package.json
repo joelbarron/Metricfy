@@ -5,7 +5,7 @@
   "description": "A simple IOT Platform - server mqtt",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV:production node server.js",
+    "start": "NODE_ENV=production node server.js",
     "start-dev": "DEBUG=metricfy:* nodemon server.js",
     "lint": "standard"
   },

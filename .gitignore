@@ -20,3 +20,4 @@ metricfy-db/.nyc_output
 
 #env
 metricfy-deploy/env/production.env
+metricfy-agent/examples/azure.js
