@@ -11,7 +11,7 @@ services:
     volumes:
       - /opt/metricfy/source-code:/home/node/app
     ports:
-      - "7600:58"
+      - "1883:1883"
     env_file:
       - ./env/production.env
     links:
